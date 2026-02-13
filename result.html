@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --rose: #ff6b9d;
+            --blush: #ffc2d1;
+            --cream: #fff5f7;
+            --deep-rose: #c41e3a;
+            --gold: #d4af37;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, var(--cream) 0%, #ffe4ec 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        /* Animated petals falling */
+        .petals {
+            position: fixed;
+            top: -10%;
+            left: 0;
+            width: 100%;
+            height: 110%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .petal {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: var(--rose);
+            opacity: 0.5;
+            border-radius: 50% 0 50% 0;
+            animation: fall 12s infinite ease-in-out;
+        }
+
+        .petal:nth-child(1) { left: 5%; animation-delay: 0s; background: #ff6b9d; }
+        .petal:nth-child(2) { left: 15%; animation-delay: 2s; background: #ffc2d1; }
+        .petal:nth-child(3) { left: 25%; animation-delay: 4s; background: #ff6b9d; }
+        .petal:nth-child(4) { left: 35%; animation-delay: 1s; background: #ffb3c6; }
+        .petal:nth-child(5) { left: 45%; animation-delay: 3s; background: #ff6b9d; }
+        .petal:nth-child(6) { left: 55%; animation-delay: 5s; background: #ffc2d1; }
+        .petal:nth-child(7) { left: 65%; animation-delay: 2.5s; background: #ffb3c6; }
+        .petal:nth-child(8) { left: 75%; animation-delay: 4.5s; background: #ff6b9d; }
+        .petal:nth-child(9) { left: 85%; animation-delay: 1.5s; background: #ffc2d1; }
+        .petal:nth-child(10) { left: 95%; animation-delay: 3.5s; background: #ff6b9d; }
+
+        @keyframes fall {
+            0% { 
+                transform: translateY(-10vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.4; }
+            100% { 
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 900;
+            color: var(--deep-rose);
+            text-align: center;
+            margin-bottom: 40px;
+            letter-spacing: 5px;
+            line-height: 1.2;
+            animation: scaleIn 1s ease-out;
+            text-shadow: 2px 2px 4px rgba(196, 30, 58, 0.1);
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 50px 40px;
+            border-radius: 30px;
+            box-shadow: 0 25px 70px rgba(196, 30, 58, 0.2);
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            animation: fadeInUp 0.8s ease-out 0.3s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .poem {
+            text-align: center;
+            font-size: 1.5rem;
+            line-height: 1.8;
+            color: var(--deep-rose);
+            font-weight: 400;
+            margin-bottom: 30px;
+        }
+
+        .poem .highlight {
+            color: var(--rose);
+            font-weight: 600;
+            font-style: italic;
+        }
+
+        .divider {
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--rose), transparent);
+            margin: 30px auto;
+        }
+
+        .tulip-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            animation: bounceIn 1s ease-out 0.6s backwards;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .tulip {
+            width: 400px;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
+            animation: sway 4s ease-in-out infinite;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.15));
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(2deg); }
+            75% { transform: rotate(-2deg); }
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--deep-rose);
+            background: white;
+            border: 2px solid var(--rose);
+            border-radius: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            animation: fadeIn 1s ease-out 1s backwards;
+            margin: 0 auto;
+            display: block;
+            width: fit-content;
+        }
+
+        .back-btn:hover {
+            background: var(--rose);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 3rem;
+                letter-spacing: 2px;
+            }
+
+            .card {
+                padding: 35px 25px;
+            }
+
+            .poem {
+                font-size: 1.3rem;
+            }
+
+            .tulip {
+                width: 280px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2.2rem;
+            }
+
+            .poem {
+                font-size: 1.1rem;
+            }
+
+            .tulip {
+                width: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="petals">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="petal"></div>
+    </div>
+
+    <div class="content-wrapper">
+        <h1 class="main-title">HAPPY<br>VALENTINE'S DAY</h1>
+
+        <div class="card">
+            <div class="poem" id="poem">
+                <!-- Poem will be inserted here -->
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="tulip-container">
+                <img id="tulipImage" class="tulip" src="" alt="Tulip">
+            </div>
+        </div>
+
+        <a href="index.html" class="back-btn">Create Another ♥</a>
+    </div>
+
+    <script>
+        // Get data from localStorage
+        const name = localStorage.getItem('valentineName') || 'Friend';
+        const color = localStorage.getItem('valentineColor') || 'red';
+
+        // Color mapping with PNG filenames
+        const colors = {
+            red: { name: 'red', image: 'tulip_red.png' },
+            pink: { name: 'pink', image: 'tulip_pink.png' },
+            purple: { name: 'purple', image: 'tulip_purple.png' }
+        };
+
+        // Set tulip image
+        const tulipImage = document.getElementById('tulipImage');
+        tulipImage.src = colors[color].image;
+        tulipImage.alt = `${colors[color].name} tulip`;
+
+        // Create personalized poem
+        const poemHTML = `
+            Happy Valentine's Day <span class="highlight">${name}</span>, may your day bloom as beautifully as your <span class="highlight">${colors[color].name}</span> tulip!
+        `;
+        document.getElementById('poem').innerHTML = poemHTML;
+
+        // If no data, redirect to home
+        if (!localStorage.getItem('valentineName')) {
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
